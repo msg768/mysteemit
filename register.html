@@ -25,7 +25,7 @@
     return false;
    } else {
     var newAccountName = document.getElementById('newAccountName').value;
-    if(newAccountName.length < 3 || !newAccountName.match(/^[a-z][a-z0-9\-\.]+$/)) {
+    if(steem.utils.validateAccountName(newAccountName) != null) {
      var errorMessage = 'Not valid!';
      document.getElementById('newAccountName_err').innerHTML = errorMessage;
      return false;
