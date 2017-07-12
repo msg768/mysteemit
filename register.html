@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -33,6 +34,11 @@
             font-size: 13px;
             color: red;
         }
+		
+		div.output span.output {
+			font-family: ubuntu;
+			font-size: 13px;
+		}
     </style>
     <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
     <title>STEEM BLOCKCHAIN - REGISTER</title>
@@ -284,7 +290,7 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td colspan="2"><input type="button" id="register" value="Register" onclick="register();">&nbsp;<span id="status"></span><span id="bar"></span></td>
+                <td colspan="2"><input type="button" id="register" value="Register" onclick="register();">&nbsp;<span class="output" id="status"></span><span id="bar"></span></td>
             </tr>
             <tr>
                 <td colspan='3'>
