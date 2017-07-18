@@ -299,8 +299,7 @@
 
         function transferTheTips() {
             var myFee_ = (followers__.length * myFee).toFixed(3) + " SBD";
-            var confirm_ = confirm("This is a clientside application, which means if you close this window, the application will stop without completeing all the transactions. The first transaction will be 
-				   's fee which is " + myFee_ + ". All transfers are non-refundable. Are you sure you want to continue?");
+            var confirm_ = confirm("This is a clientside application, which means if you close this window, the application will stop without completeing all the transactions. The first transaction will be @msg768's fee which is " + myFee_ + ". All transfers are non-refundable. Are you sure you want to continue?");
 
             if (confirm_) {
                 disableAll();
