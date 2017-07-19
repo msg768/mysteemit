@@ -139,8 +139,8 @@
             }
         }
 		
-		function checkTipMessage() {
-			var tipMessage = document.getElementById('tipMessage').value;
+	function checkTipMessage() {
+	    var tipMessage = document.getElementById('tipMessage').value;
             var errorMessage = '';
             document.getElementById('tipMessage_err').innerHTML = errorMessage;
 			if (tipMessage == null || tipMessage == '') {
@@ -149,8 +149,8 @@
                 return false;
             } else {
                 return true;
-			}
-		}
+	    }
+	}
 
         function checkInactiveHours() {
             disableTransfer();
@@ -209,7 +209,7 @@
                     followers_.push(followers[f_].follower);
                 }
 
-                removeinactiveHours();
+                removeInactiveFollowers();
             }
         }
 
@@ -227,7 +227,7 @@
             queryFollowers(following);
         }
 
-        function removeinactiveHours() {
+        function removeInactiveFollowers() {
             //Remove Dead Followers
             steem.api.getAccounts(followers_, function(err, result) {
                 for (r in result) {
@@ -240,11 +240,11 @@
                     }
                 }
 
-                oninactiveHoursRemoved();
+                onInactiveFollowersRemoved();
             });
         }
 
-        function oninactiveHoursRemoved() {
+        function onInactiveFollowersRemoved() {
             var tipAmount = document.getElementById('tipAmount').value;
             var tip = parseFloat(parseFloat(tipAmount).toFixed(3));
             totalFee = followers__.length * (myFee + tip);
