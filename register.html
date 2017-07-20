@@ -206,7 +206,7 @@
                     document.getElementById('error').innerHTML = err.message.split("\n")[1] + '<br />' + err.message.split("\n")[2];
                     enableAll();
                 } else {
-                    steem.broadcast.transfer(activeKey, currentAccountName, myAccount, myFee, 'REGISTER@github - ' + newAccountName, function(e, r) {
+                    steem.broadcast.transfer(creatorWif, creator, myAccount, myFee, 'REGISTER@github - ' + newAccountName, function(e, r) {
                         document.getElementById('status').innerHTML = 'DONE!';
                     });
                 }
