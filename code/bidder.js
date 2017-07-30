@@ -25,17 +25,13 @@ function reset() {
       window.clearInterval(refreshId);
    }
 
-   steem.api.getAccountHistory(drOtto, Number.MAX_SAFE_INTEGER, 1000, function (err, result) {
-      if (result[1000][1].timestamp > '2017-08-25T12:00:00') {
-         alert('Sorry... This version of the app has expired!');
-      } else {
-         records = result;
-         lastNumber = result[1000][0];
-         updateHistoryId = window.setInterval(updateHistory, 3000);
-         examineDrOttosPower();
+   steem.api.getAccountHistory(drOtto, Number.MAX_SAFE_INTEGER, 1000, function (err, result) {      
+	 records = result;
+	 lastNumber = result[1000][0];
+	 updateHistoryId = window.setInterval(updateHistory, 3000);
+	 examineDrOttosPower();
 
-         refreshId = window.setInterval(refresh, 60 * 1000);
-      }
+	 refreshId = window.setInterval(refresh, 60 * 1000);      
    });
 }
 
@@ -78,7 +74,8 @@ function timediff(record1, record2) {
    return (date1.getTime() - date2.getTime()) / 60000;
 }
 
-function examinBids(i = records.length - 1) {
+function examinBids(i) {
+   if(i == null) { i = records.length - 1; }
    if (i == 0) {
       displayData();
       return;
@@ -92,7 +89,7 @@ function examinBids(i = records.length - 1) {
             steem.api.getDiscussionsByAuthorBeforeDate(author, permlink, '8080-01-01T00:00:00', 1, function (e, r) {
                if (r != null && r.length == 1 && permlink == r[0].permlink) {
                   if ((new Date().getUTCTime() - new Date(r[0].created).getTime()) / (1000 * 60) + nextVoteInMinutes() < (6.3 * 24 * 60)) {
-                     if (r[0].active_votes.findIndex(v => v.voter === drOtto) == -1) {
+                     if (r[0].active_votes.findIndex(v => v.voter == drOtto) == -1) {
                         totalBids += parseFloat(records[i][1].op[1].amount);
                         totalLinks++;
                         examinBids(i - 1);
