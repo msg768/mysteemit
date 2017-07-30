@@ -1,0 +1,110 @@
+<html>
+   <head>
+      <link rel="stylesheet" href="css/styles.css">
+      <script src="code/bidder.js"></script>
+      <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+      <title>Bidder - Dr. Otto Analyzer</title>
+      <head/>
+   <body>
+      <iframe src='menu.html' width='100%' height='28px' style='border: none;'></iframe>
+      <table align='center' width='588px'>
+         <tr>
+            <td style='text-align: center'>
+               <h2>BIDDER — DR. OTTO ANALYZER</h2>
+            </td>
+         </tr>
+		 <tr>
+            <td>
+               <hr />
+            </td>
+         </tr>
+         <tr>
+            <td style='text-align: center' height='50'>
+               <label for='drOttosAccount'>Dr. Otto's Account: </label>
+               <input type='text' id='drOttosAccount' value='booster' />
+               <input type='button' id='btnReset' value='Start/Reset' onclick='reset();' />				
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <hr />
+            </td>
+         </tr>
+         <tr>
+            <td style='text-align: center'>
+               <table align='center' class='result'>
+                  <tr>
+                     <td width='200px'>
+                        <span class='spanL'>Latest Upvote Value(SBD): </span>
+                     </td>
+                     <td width='80px'>
+                        <span class='spanV' id='latestUpvoteValue'></span>
+                        <div><img class='overlayLoader' /></div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <span class='spanL'>Latest Upvote Percent: </span>
+                     </td>
+                     <td>
+                        <span class='spanV' id='latestUpvotePercent'></span>
+                        <div><img class='overlayLoader' /></div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <span class='spanL'>100% Upvote Value(SBD): </span>
+                     </td>
+                     <td>
+                        <span class='spanV' id='fullUpvoteValue'></span>
+                        <div><img class='overlayLoader' /></div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <span class='spanL'>Window Interval(MINUTES): </span>
+                     </td>
+                     <td>
+                        <span class='spanV' id='votingInterval'></span>
+                        <div><img class='overlayLoader' /></div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <span class='spanL'>Total Number of Bids: </span>
+                     </td>
+                     <td>
+                        <span class='spanV' id='totalNumberOfBids'></span>
+                        <div><img class='overlayLoader' /></div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <span class='spanL'>Total Amount of Bids(SBD): </span>
+                     </td>
+                     <td>
+                        <span class='spanV' id='totalAmountOfBids'></span>
+                        <div><img class='overlayLoader' /></div>
+                     </td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <hr />
+            </td>
+         </tr>
+         <tr>
+            <td style='text-align: center' height='50'>
+               <label for='yourBid'>Your Bid: </label>
+               <input type='number' id='yourBid' value='1.000' min='0.001' />
+               <input type='button' id='btnCalculate' value='Calculate' onclick='calculateMyBidsValue(this.value);' />
+            </td>
+         </tr>
+         <tr>
+            <td style='text-align: center'><span class='spanR' id='result'></span></td>
+         </tr>
+      </table>
+   </body>
+</html>
