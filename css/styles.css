@@ -1,0 +1,132 @@
+body {
+   margin: 0;
+   font-family: ubuntu;
+   font-size: 13px;
+}
+
+label {
+   font-family: ubuntu;
+   font-size: 13px;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='number'],
+textarea {
+   font-family: ubuntu;
+   font-size: 13px;
+   width: 300px;
+   resize: none;
+}
+
+input[type='button'] {
+   font-family: ubuntu;
+   font-size: 13px;
+   font-weight: bold;
+}
+
+div.error {
+   font-family: ubuntu;
+   font-weight: bold;
+   font-size: 13px;
+   color: red;
+}
+
+div.info,
+div.output,
+span.output,
+div,
+span {
+   font-family: ubuntu;
+   font-size: 13px;
+}
+
+div.link {
+	font-weight: bold;
+}
+
+span.status {
+   font-family: ubuntu;
+   font-weight: bold;
+   font-size: 13px;
+}
+
+span.spanL {
+   font-family: tahoma;
+   font-size: 11px;
+}
+
+span.spanV {
+   font-family: tahoma;
+   font-size: 11px;
+}
+
+span.spanR {
+   font-family: ubuntu;
+   font-size: 13px;
+}
+
+table.result {
+   border-collapse: collapse;
+   border: 1px solid #d1d1d1;
+}
+
+table.result th,
+table.result td {
+   text-align: left;
+   padding: 4px;
+}
+
+table.result tr:nth-child(odd) {
+   background-color: #f2f2f2;
+   border-bottom: 1px solid #d1d1d1;
+}
+
+table.result td:nth-child(even) {
+   border-left: 1px solid #d1d1d1;
+}
+
+table.result th {
+   background-color: #black;
+   color: white;
+}
+
+img.overlayLoader {
+   width: 12px;
+   height: 12px;
+   display: none;   
+   content:url('../images/ajax-loader.gif');
+}
+
+.topnav {
+   overflow: hidden;
+   background-color: #333;
+   letter-spacing: 0.5px;
+}
+
+.topnav a {
+   float: left;
+   display: block;
+   color: #f2f2f2;
+   text-align: center;
+   padding: 5px 5px;
+   text-decoration: none;
+   font-size: 15px;
+}
+
+.topnav a:hover {
+   background-color: #ddd;
+   color: black;
+}
+
+.topnav a.active {
+   background-color: #4CAF50;
+   color: white;
+}
+
+h2 {
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-weight: 500;
+	font-size: 17px;
+	letter-spacing: 1px;
+}
