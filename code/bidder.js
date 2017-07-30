@@ -250,7 +250,7 @@ function refresh() {
 
 function calculateMyBidsValue() {
    var myBid = parseFloat(document.getElementById('yourBid').value);
-   if (!Number.isNaN(myBid) && myBid > 0.001) {
+   if (!Number.isNaN(myBid) && myBid > 0) {
       var myBidValue = myBid * lastFullUpvoteValue / (totalBids + myBid);
       var myBidPercent = myBid * 100 / (totalBids + myBid);
       var nextWindow = nextVoteInMinutes();
