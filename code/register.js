@@ -1,7 +1,3 @@
-var totalFee = 8;
-var myFee = '2.000 STEEM';
-var steemFee = '6.000 STEEM';
-var myAccount = 'msg768';
 var barId = null;
 
 function checkNewAccountName() {
@@ -15,10 +11,13 @@ function checkNewAccountName() {
          var newAccountName = document.getElementById('newAccountName').value;
          if (steem.utils.validateAccountName(newAccountName) != null) {
             var errorMessage = 'Not valid!';
+            var details = steem.utils.validateAccountName(newAccountName);
             document.getElementById('newAccountName_err').innerHTML = errorMessage;
+            document.getElementById('error').innerHTML = details;
             return false;
          } else {
             document.getElementById('newAccountName_err').innerHTML = '';
+            document.getElementById('error').innerHTML = '';
             return true;
          }
       }
@@ -33,7 +32,7 @@ function checkCurrentAccountName() {
          document.getElementById('currentAccountName_err').innerHTML = errorMessage;
          return false;
       } else {
-         if (parseFloat(result[0].balance) < totalFee) {
+         if (parseFloat(result[0].balance) < 8) {
             var errorMessage = 'Not enough STEEM!';
             document.getElementById('currentAccountName_err').innerHTML = errorMessage;
             return false;
@@ -116,7 +115,7 @@ function createNewAccount() {
 
    var creator = document.getElementById('currentAccountName').value;
    var creatorWif = document.getElementById('activeKey').value;
-   var fee = steemFee;
+   var fee = '6.000 STEEM';
 
    var owner = new Object();
    owner.weight_threshold = 1;
@@ -147,10 +146,15 @@ function createNewAccount() {
       window.clearInterval(barId);
       if (err != null) {
          console.log(err);
-         document.getElementById('error').innerHTML = 'Failed! To find out why, open the console.';         
+         document.getElementById('error').innerHTML = 'Failed! To find out why, open the console.';
          enableAll();
       } else {
-         steem.broadcast.transfer(creatorWif, creator, myAccount, myFee, 'REGISTER@github - ' + newAccountName, function (e, r) {
+         steem.broadcast.transfer(creatorWif, creator, 'msg768', '2.000 STEEM', 'REGISTER@github - ' + newAccountName, function (e, r) {
+            if (e != null) {
+               console.log(e);
+               document.getElementById('error').innerHTML = 'Transferring 2.000 STEEM to @msg768 failed, but your account was created successfully. Would you be kind enough to contact @msg768 on steemit.chat about this? Thank you! :]';
+            }
+
             document.getElementById('status').innerHTML = 'DONE!';
          });
       }
@@ -196,10 +200,10 @@ function register() {
 }
 
 function toggleReadMe() {
-	var visible = document.getElementById('readMe').style.display;
-	if(visible == 'none') {
-		document.getElementById('readMe').style.display = 'inline';
-	} else {
-		document.getElementById('readMe').style.display = 'none';
-	}
+   var visible = document.getElementById('readMe').style.display;
+   if (visible == 'none') {
+      document.getElementById('readMe').style.display = 'inline';
+   } else {
+      document.getElementById('readMe').style.display = 'none';
+   }
 }
