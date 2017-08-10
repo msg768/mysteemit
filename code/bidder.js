@@ -10,6 +10,7 @@ var updateHistoryId = -1;
 var lastPostValue, lastUpvoteValue, lastUpvotePercent, lastFullUpvoteValue;
 var interval, totalBids, totalLinks, indexA, indexB;
 var result = 'Your bid can currently get you a _VOTEP_% upvote from _DROTTO_ worth approximately $_VOTEV_ SBD. Dr. Otto(_DROTTO_) is going to start voting in approximately <b>_TMIN_</b> minute(s). Good luck!';
+var VOTE_RECHARGE_PER_SEC  = 0.000231481481481;
 
 function reset() {
    startLoading();
@@ -25,9 +26,10 @@ function reset() {
       window.clearInterval(refreshId);
    }
 
-   steem.api.getAccountHistory(drOtto, Number.MAX_SAFE_INTEGER, 1000, function (err, result) {      
+   steem.api.getAccountHistory(drOtto, Number.MAX_SAFE_INTEGER, 1000, function (err, result) {
 	 records = result;
-	 lastNumber = result[1000][0];
+	 var l = Math.min(1000, result.length-1);
+	 lastNumber = result[l][0];
 	 updateHistoryId = window.setInterval(updateHistory, 3000);
 	 examineDrOttosPower();
 
@@ -287,4 +289,17 @@ function displayData() {
    document.getElementById('totalNumberOfBids').innerHTML = totalLinks;
    document.getElementById('totalAmountOfBids').innerHTML = '$' + totalBids.toFixed(2);
    calculateMyBidsValue();
+}
+
+function accurateMinutesLeft() {
+   steem.api.getAccounts([drOtto], function(err, result) {
+      last_vote_time = result[0].last_vote_time;
+      voting_power = result[0].voting_power/100;
+	  voting_elapse = ((new Date().getUTCTime()) - (new Date(last_vote_time)))/1000;
+	  current_voting_power = voting_power + (voting_elapse * VOTE_RECHARGE_PER_SEC);
+	  current_voting_power = Math.min(100, current_voting_power);
+	  difference = current_voting_power - voting_power;
+	  accurate_minutes = ((100.0 - current_voting_power) / VOTE_RECHARGE_PER_SEC) / 60;
+      console.log(accurate_minutes);
+   });
 }
