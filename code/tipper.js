@@ -20,6 +20,8 @@ var followers_ = new Array();
 var followers__ = new Array();
 var lastOne = '0';
 var chunk = 1000;
+var myAccount = 'msg768';
+var myMemo = 'TIPPER@github';
 var myFee = 0.001 //Per Transaction
 var totalFee = 0; //Total Fee
 var feeFlag = false;
@@ -268,7 +270,7 @@ function transferTheTips() {
       var accountName = document.getElementById('accountName').value;
 
       appendHTML("<BR />");
-      steem.broadcast.transfer(activeKey, accountName, 'msg768', myFee_, "TIPPER@github", function (err, result) {
+      steem.broadcast.transfer(activeKey, accountName, myAccount, myFee_, myMemo, function (err, result) {
          if (err == null) {
             appendHTML("Transfered " + myFee_ + " To @msg768.");
             var activeKey = document.getElementById('activeKey').value;
