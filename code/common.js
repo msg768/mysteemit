@@ -1,7 +1,7 @@
 window.onload = function () {
    var link = 'https://rawgit.com/msg768/mysteemit/master/';
    if (!window.location.href.startsWith(link)) {
-      //window.location.href = link+app+'.html';
+      window.location.href = link+app+'.html';
    } else {
       if (app == 'raffle') {
          start();
