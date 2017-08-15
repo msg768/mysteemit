@@ -1,20 +1,4 @@
-Date.prototype.getUTCTime = function () {
-   return this.getTime() + (this.getTimezoneOffset() * 60000);
-};
-
-function appendHTML(html, resetFlag) {
-   var div = document.createElement("div");
-   div.innerHTML = html;
-
-   if(resetFlag == null) { resetFlag = false; }
-   if (resetFlag) {
-      document.getElementById('result').innerHTML = "";
-   }
-
-   document.getElementById('result').appendChild(div);
-   window.scrollTo(0, document.body.scrollHeight);
-}
-
+var app = 'tipper';
 var followers = new Array();
 var followers_ = new Array();
 var followers__ = new Array();
@@ -26,8 +10,26 @@ var myFee = 0.001 //Per Transaction
 var totalFee = 0; //Total Fee
 var feeFlag = false;
 
+function appendHTML(html, resetFlag) {
+   var div = document.createElement("div");
+   div.innerHTML = html;
+
+   if (resetFlag == null) {
+      resetFlag = false;
+   }
+   if (resetFlag) {
+      document.getElementById('result').innerHTML = "";
+   }
+
+   document.getElementById('result').appendChild(div);
+   window.scrollTo(0, document.body.scrollHeight);
+}
+
+
 function checkAccountName(flag) {
-   if(flag == null) { flag = false; }
+   if (flag == null) {
+      flag = false;
+   }
    disableTransfer();
    var accountName = document.getElementById('accountName').value;
    steem.api.getAccounts([accountName], function (err, result) {
@@ -214,7 +216,9 @@ function onInactiveFollowersRemoved() {
 }
 
 function disableAll(flag) {
-   if(flag == null) { flag = true; }
+   if (flag == null) {
+      flag = true;
+   }
    document.getElementById('accountName').disabled = flag;
    document.getElementById('activeKey').disabled = flag;
    document.getElementById('tipAmount').disabled = flag;
@@ -228,20 +232,26 @@ function disableAll(flag) {
 }
 
 function disableTransfer(flag) {
-   if(flag == null) { flag = true; }
+   if (flag == null) {
+      flag = true;
+   }
    document.getElementById('transfer').disabled = flag;
 }
 
 var barId = 0;
 
 function startLoading(milliseconds) {
-   if(milliseconds == null) { milliseconds = true; }
+   if (milliseconds == null) {
+      milliseconds = true;
+   }
    document.getElementById('status').innerHTML = 'PLEASE WAIT';
    barId = window.setInterval(loadBar, milliseconds);
 }
 
 function stopLoading(message) {
-   if(message == null) { message = ''; }
+   if (message == null) {
+      message = '';
+   }
    window.clearInterval(barId);
    document.getElementById('status').innerHTML = message;
    document.getElementById('bar').innerHTML = '';
@@ -290,7 +300,9 @@ function transferTheTips() {
 }
 
 function bulkTransfer(accountName, activeKey, tipAmount, tipMessage, index) {
-   if(index == null) { index = 0; }
+   if (index == null) {
+      index = 0;
+   }
    if (index == followers__.length) {
       appendHTML("<BR />");
       appendHTML("ALL DONE! :]");
