@@ -1,3 +1,4 @@
+var app = 'register';
 var barId = null;
 
 function checkNewAccountName() {
