@@ -1,7 +1,4 @@
-Date.prototype.getUTCTime = function () {
-   return this.getTime() + (this.getTimezoneOffset() * 60000);
-};
-
+var app = 'bidder';
 var records = new Array();
 var lastNumber = 0;
 var refreshId = 0;
@@ -10,7 +7,7 @@ var updateHistoryId = -1;
 var lastPostValue, lastUpvoteValue, lastUpvotePercent, lastFullUpvoteValue;
 var interval, totalBids, totalLinks, indexA, indexB;
 var result = 'Your bid can currently get you a _VOTEP_% upvote from _DROTTO_ worth approximately $_VOTEV_ SBD. Dr. Otto(_DROTTO_) is going to start voting in approximately <b>_TMIN_</b> minute(s). Good luck!';
-var VOTE_RECHARGE_PER_SEC  = 0.000231481481481;
+var VOTE_RECHARGE_PER_SEC = 0.000231481481481;
 
 function reset() {
    startLoading();
@@ -27,13 +24,13 @@ function reset() {
    }
 
    steem.api.getAccountHistory(drOtto, Number.MAX_SAFE_INTEGER, 1000, function (err, result) {
-	 records = result;
-	 var l = Math.min(1000, result.length-1);
-	 lastNumber = result[l][0];
-	 updateHistoryId = window.setInterval(updateHistory, 3000);
-	 examineDrOttosPower();
+      records = result;
+      var l = Math.min(1000, result.length - 1);
+      lastNumber = result[l][0];
+      updateHistoryId = window.setInterval(updateHistory, 3000);
+      examineDrOttosPower();
 
-	 refreshId = window.setInterval(refresh, 60 * 1000);      
+      refreshId = window.setInterval(refresh, 60 * 1000);
    });
 }
 
@@ -77,7 +74,9 @@ function timediff(record1, record2) {
 }
 
 function examinBids(i) {
-   if(i == null) { i = records.length - 1; }
+   if (i == null) {
+      i = records.length - 1;
+   }
    if (i == 0) {
       displayData();
       return;
@@ -87,7 +86,7 @@ function examinBids(i) {
          var memo = records[i][1].op[1].memo;
          if (memo.startsWith('http')) {
             var author = getAuthor(memo);
-            var permlink = getPermlink(memo);            
+            var permlink = getPermlink(memo);
             steem.api.getDiscussionsByAuthorBeforeDate(author, permlink, '8080-01-01T00:00:00', 1, function (e, r) {
                if (r != null && r.length == 1 && permlink == r[0].permlink) {
                   if ((new Date().getUTCTime() - new Date(r[0].created).getTime()) / (1000 * 60) + nextVoteInMinutes() < (6.3 * 24 * 60)) {
@@ -136,7 +135,7 @@ function examinBids(i) {
    }
 }
 
-function examineDrOttosBids() {   
+function examineDrOttosBids() {
    totalBids = 0;
    totalLinks = 0;
    examinBids();
@@ -163,9 +162,9 @@ function stopLoading() {
 
 function examineDrOttosTimes() {
    var i1 = -1,
-       i2 = -1,
-       ii = -1;
-   
+      i2 = -1,
+      ii = -1;
+
    for (i = records.length - 1; i >= 0; i--) {
       if (records[i][1].op[0] == 'vote' && records[i][1].op[1].voter == drOtto) {
          var author = records[i][1].op[1].author;
@@ -292,14 +291,14 @@ function displayData() {
 }
 
 function accurateMinutesLeft() {
-   steem.api.getAccounts([drOtto], function(err, result) {
+   steem.api.getAccounts([drOtto], function (err, result) {
       last_vote_time = result[0].last_vote_time;
-      voting_power = result[0].voting_power/100;
-	  voting_elapse = ((new Date().getUTCTime()) - (new Date(last_vote_time)))/1000;
-	  current_voting_power = voting_power + (voting_elapse * VOTE_RECHARGE_PER_SEC);
-	  current_voting_power = Math.min(100, current_voting_power);
-	  difference = current_voting_power - voting_power;
-	  accurate_minutes = ((100.0 - current_voting_power) / VOTE_RECHARGE_PER_SEC) / 60;
+      voting_power = result[0].voting_power / 100;
+      voting_elapse = ((new Date().getUTCTime()) - (new Date(last_vote_time))) / 1000;
+      current_voting_power = voting_power + (voting_elapse * VOTE_RECHARGE_PER_SEC);
+      current_voting_power = Math.min(100, current_voting_power);
+      difference = current_voting_power - voting_power;
+      accurate_minutes = ((100.0 - current_voting_power) / VOTE_RECHARGE_PER_SEC) / 60;
       console.log(accurate_minutes);
    });
 }
