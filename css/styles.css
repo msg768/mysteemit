@@ -130,3 +130,15 @@ h2 {
 	font-size: 17px;
 	letter-spacing: 1px;
 }
+
+div.rafflejackpot {
+   font-family: fantasy;
+   font-size: 200px;
+   text-align: center;
+}
+
+div.rafflestatus {
+   font-family: fantasy;
+   font-size: 30px;
+   text-align: center;
+}
