@@ -104,7 +104,7 @@ function selectWinner() {
    }
    steem.api.getDynamicGlobalProperties(function (e, r) {
       var rightNow = r.time;
-      var date = new Date().getUTCString();
+      var date = r.time;
       var date = date.split('T')[0] + 'T00:00:00';
       var seconds = ((new Date(rightNow)).getTime() - (new Date(date)).getTime()) / 1000;
       var block_number = r.head_block_number - seconds / 3 - 2;
@@ -115,8 +115,6 @@ function selectWinner() {
 function examineTheBlocks(block_number, date) {
    steem.api.getBlock(block_number, function (e, r) {
       if (r.timestamp >= date) {
-         console.log('Block Number: ' + block_number);
-         console.log(r);
          blockFound(r.transaction_ids[0], date);
       } else {
          examineTheBlocks(block_number + 1, date);
