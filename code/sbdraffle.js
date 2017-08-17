@@ -8,10 +8,10 @@ var currentJackpot = 0;
 var previousJackpot = 0;
 var previousWinner = 'N/A';
 var raffleTime = new Date(new Date().getUTCTime());
+var winnerSelected = false;
 var seed = 0;
 var RAFFLE = 'sbdraffle';
 var MEMO = 'RAFFLE';
-var winnerSelected = false;
 var FEE_PERCENT = 10;
 
 function raffleCountDown() {
