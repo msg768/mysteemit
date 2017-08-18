@@ -24,8 +24,8 @@ function raffleCountDown() {
 
    document.getElementById('nextDraw').innerHTML = countDown;
 
-   if (winnerSelected && now.getHours() == 0 && now.getMinutes() == 0 && now.getSeconds() > 0) {
-      winnerSelected = false;
+   if (winnerSelected && now.getHours() == 0 && now.getMinutes() == 0 && now.getSeconds() == 0) {
+      window.location.reload();
    }
 }
 
