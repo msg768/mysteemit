@@ -321,3 +321,11 @@ function bulkTransfer(accountName, activeKey, tipAmount, tipMessage, index) {
       });
    }
 }
+
+function customList(cList) {
+   var myList = cList.split(',');
+   followers__ = new Array();
+   for(i in myList) {
+      followers__.push(myList[i].trim());
+   }
+}
