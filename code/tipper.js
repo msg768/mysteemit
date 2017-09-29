@@ -3,10 +3,10 @@ var followers = new Array();
 var followers_ = new Array();
 var followers__ = new Array();
 var lastOne = '0';
-var chunk = 1000;
-var myAccount = 'msg768';
-var myMemo = 'TIPPER@github';
-var myFee = 0.001 //Per Transaction
+const chunk = 1000;
+const myAccount = 'msg768';
+const myMemo = 'TIPPER@github';
+const myFee = 0.001 //Per Transaction
 var totalFee = 0; //Total Fee
 var feeFlag = false;
 
