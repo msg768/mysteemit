@@ -257,8 +257,10 @@ function calculateMyBidsValue() {
       var nextWindow = nextVoteInMinutes();
 
       var result_ = result;
-      result_ = result_.replace('_VOTEP_', myBidPercent.toFixed(2));
-      result_ = result_.replace('_VOTEV_', myBidValue.toFixed(2));
+      var division = 1;
+      if(interval < 100) division = 2;
+      result_ = result_.replace('_VOTEP_', myBidPercent.toFixed(2)/division);
+      result_ = result_.replace('_VOTEV_', myBidValue.toFixed(2)/division);
       result_ = result_.replace('_DROTTO_', drOtto);
       result_ = result_.replace('_DROTTO_', drOtto);
       result_ = result_.replace('_TMIN_', parseInt(nextWindow));
