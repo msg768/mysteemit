@@ -9,6 +9,8 @@ var interval, totalBids, totalLinks, indexA, indexB;
 var result = 'Your bid can currently get you a _VOTEP_% upvote from _DROTTO_ worth approximately $_VOTEV_ SBD. Dr. Otto(_DROTTO_) is going to start voting in approximately <b>_TMIN_</b> minute(s). Good luck!';
 var VOTE_RECHARGE_PER_SEC = 0.000231481481481;
 
+steem.api.setOptions({ url: 'https://api.steemit.com' });
+
 function reset() {
    startLoading();
    drOtto = document.getElementById('drOttosAccount').value;
