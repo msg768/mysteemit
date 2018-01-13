@@ -10,8 +10,6 @@ const myFee = 0.001 //Per Transaction
 var totalFee = 0; //Total Fee
 var feeFlag = false;
 
-steem.api.setOptions({ url: 'https://api.steemit.com' });
-
 function appendHTML(html, resetFlag) {
    var div = document.createElement("div");
    div.innerHTML = html;
