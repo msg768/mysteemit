@@ -14,6 +14,8 @@ var RAFFLE = 'sbdraffle';
 var MEMO = 'RAFFLE';
 var FEE_PERCENT = 10;
 
+steem.api.setOptions({ url: 'https://api.steemit.com' });
+
 function raffleCountDown() {
    var countDown = 'NEXT DRAW: HH:MM:SS';
    var now = new Date(new Date().getUTCTime());
