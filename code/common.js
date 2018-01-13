@@ -7,9 +7,7 @@ window.onload = function () {
       if (app == 'sbdraffle') {
          start();
       }
-   }
-
-   steem.api.setOptions({ url: 'https://api.steemit.com' });
+   }   
 }
 
 Number.prototype.zeroPad = function (length) {
