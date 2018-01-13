@@ -116,7 +116,7 @@ function createNewAccount() {
 
    var creator = document.getElementById('currentAccountName').value;
    var creatorWif = document.getElementById('activeKey').value;
-   var fee = '6.000 STEEM';
+   var fee = '3.000 STEEM';
 
    var owner = new Object();
    owner.weight_threshold = 1;
