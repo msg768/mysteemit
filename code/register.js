@@ -150,10 +150,10 @@ function createNewAccount() {
          document.getElementById('error').innerHTML = 'Failed! To find out why, open the console.';
          enableAll();
       } else {
-         steem.broadcast.transfer(creatorWif, creator, 'msg768', '2.000 STEEM', 'REGISTER@github - ' + newAccountName, function (e, r) {
+         steem.broadcast.transfer(creatorWif, creator, 'msg768', '1.000 STEEM', 'REGISTER@github - ' + newAccountName, function (e, r) {
             if (e != null) {
                console.log(e);
-               document.getElementById('error').innerHTML = 'Transferring 2.000 STEEM to @msg768 failed, but your account was created successfully. Would you be kind enough to contact @msg768 on steemit.chat about this? Thank you! :]';
+               document.getElementById('error').innerHTML = 'Transferring 1.000 STEEM to @msg768 failed, but your account was created successfully. Would you be kind enough to contact @msg768 on steemit.chat about this? Thank you! :]';
             }
 
             document.getElementById('status').innerHTML = 'DONE!';
