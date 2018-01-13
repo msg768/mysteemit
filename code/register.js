@@ -1,8 +1,6 @@
 var app = 'register';
 var barId = null;
 
-steem.api.setOptions({ url: 'https://api.steemit.com' });
-
 function checkNewAccountName() {
    var newAccountName = document.getElementById('newAccountName').value;
    steem.api.getAccounts([newAccountName], function (err, result) {
