@@ -33,7 +33,7 @@ function checkCurrentAccountName() {
          document.getElementById('currentAccountName_err').innerHTML = errorMessage;
          return false;
       } else {
-         if (parseFloat(result[0].balance) < 8) {
+         if (parseFloat(result[0].balance) < 4) {
             var errorMessage = 'Not enough STEEM!';
             document.getElementById('currentAccountName_err').innerHTML = errorMessage;
             return false;
