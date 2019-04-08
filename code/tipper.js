@@ -38,8 +38,8 @@ function checkAccountName(flag) {
          document.getElementById('accountName_err').innerHTML = errorMessage;
          return false;
       } else {
-         if (parseFloat(result[0].sbd_balance) < totalFee) {
-            var errorMessage = 'Not enough SBD!';
+         if (parseFloat(result[0].balance) < totalFee) {
+            var errorMessage = 'Not enough STEEM!';
             document.getElementById('accountName_err').innerHTML = errorMessage;
             document.getElementById('transfer').disabled = true;
             return false;
@@ -210,7 +210,7 @@ function onInactiveFollowersRemoved() {
    checkAccountName(true);
 
    appendHTML('<b>Active Followers: </b>' + followers__.length, true);
-   appendHTML('<b>Total Fee: </b>' + totalFee.toFixed(3) + ' SBD');
+   appendHTML('<b>Total Fee: </b>' + totalFee.toFixed(3) + ' STEEM');
    stopLoading();
    disableAll(false);
 }
@@ -269,7 +269,7 @@ function loadBar() {
 }
 
 function transferTheTips() {
-   var myFee_ = (followers__.length * myFee).toFixed(3) + " SBD";
+   var myFee_ = (followers__.length * myFee).toFixed(3) + " STEEM";
    var confirm_ = confirm("This is a clientside application, which means if you close this window, the application will stop without completeing all the transactions. The first transaction will be @msg768's fee which is " + myFee_ + ". All transfers are non-refundable. Are you sure you want to continue?");
 
    if (confirm_) {
@@ -287,7 +287,7 @@ function transferTheTips() {
             var accountName = document.getElementById('accountName').value;
             var tipMessage = document.getElementById('tipMessage').value;
             var tipAmount = document.getElementById('tipAmount').value;
-            tipAmount = parseFloat(tipAmount).toFixed(3) + " SBD";
+            tipAmount = parseFloat(tipAmount).toFixed(3) + " STEEM";
             bulkTransfer(accountName, activeKey, tipAmount, tipMessage);
          } else {
             appendHTML("Transfering " + myFee_ + " To @msg768 Failed.");
